@@ -14,10 +14,10 @@ HTTP协议就是一个约定、一种规范，需要大家都遵守。
 - HTTP常见的状态码哪些
 - HTTP常见方法
 - get 和 post的区别
+- 常见的HTTP Headers
 
 - HTTP协议的主要特点
 - HTTP报文的组成部分
-- HTTP常见的header有哪些
 - 什么是 Restful API
 - 什么是持久连接
 - 什么是管线化
@@ -112,6 +112,49 @@ head 可能偶尔用的到。
 4、get请求在url中传递的参数有大小限制，基本是2kb，不同的浏览器略有不同。而post没有注意。
 
 5、get的参数是直接暴露在url上的，相对不安全。而post是放在请求体中的。
+
+## 常见的HTTP Headers
+
+### 常见的 Request Headers（请求头）
+
+- Accept：浏览器可接收的数据格式。
+
+- Accept-Encoding：浏览器可接收的压缩算法。比如 gzip是前后端通用的压缩算法。
+
+- Accept-Languange：浏览器可接收的语言。
+
+- Conection：keep-alive 表示一次TCP连接重复使用。（服务端 nginx的 默认超时时间 timeout是60s）
+
+- **cookie**：携带用户的身份信息、登录信息。（注意保密，不要泄露）
+
+- Host：请求的域名。
+
+- User-Agent（简称**UA**）：浏览器标识。
+
+- Content-type：发送的数据格式。比如 application/json。
+
+  
+
+### 常见的 Response Headers（响应头）
+
+- Content-encoding：返回数据的压缩算法。比如 gzip。
+- Content-type：返回的数据格式。比如 application/json。
+- Content-length：返回数据的大小，单位是字节。
+- **Set-Cookie**：服务端设置 cookie。
+
+
+
+### 细节追问
+
+1、自定义 header。
+
+2、缓存相关的 headers：
+
+- Expires、Cache-Control
+- Last-Modified、If-Modified-Since
+- ETag、If-None-Match
+
+
 
 
 
