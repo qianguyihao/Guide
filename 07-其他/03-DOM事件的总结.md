@@ -125,9 +125,9 @@ DOM事件流讲的就是：浏览器在于当前页面做交互时，这个事�
 
 - （3）冒泡：从**目标元素**传到 Window 对象。
 
-![](http://img.smyhvae.com/20180306_1058.png)
+![](https://img.smyhvae.com/20180306_1058.png)
 
-![](http://img.smyhvae.com/20180204_1218.jpg)
+![](https://img.smyhvae.com/20180204_1218.jpg)
 
 
 ## 描述DOM事件捕获的具体流程
@@ -137,7 +137,7 @@ DOM事件流讲的就是：浏览器在于当前页面做交互时，这个事�
 ### 捕获的流程
 
 
-![](http://img.smyhvae.com/20180306_1103.png)
+![](https://img.smyhvae.com/20180306_1103.png)
 
 
 **说明**：捕获阶段，事件依次传递的顺序是：window --> document --> html--> body --> 父元素、子元素、目标元素。

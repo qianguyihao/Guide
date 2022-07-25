@@ -38,11 +38,11 @@ publish: true
 
 标准盒子模型：
 
-![](http://img.smyhvae.com/2015-10-03-css-27.jpg)
+![](https://img.smyhvae.com/2015-10-03-css-27.jpg)
 
 IE盒子模型：
 
-![](http://img.smyhvae.com/2015-10-03-css-30.jpg)
+![](https://img.smyhvae.com/2015-10-03-css-30.jpg)
 
 上图显示：
 
@@ -149,7 +149,7 @@ PS：如果不在标准流，比如盒子都浮动了，那么两个盒子之间
 
 如下图所示：
 
-![](http://img.smyhvae.com/20170805_0904_2.png)
+![](https://img.smyhvae.com/20170805_0904_2.png)
 
 
 ### 子元素和父元素之间
@@ -195,11 +195,11 @@ PS：如果不在标准流，比如盒子都浮动了，那么两个盒子之间
 
 儿子这个盒子：
 
-![](http://img.smyhvae.com/20180305_2216.png)
+![](https://img.smyhvae.com/20180305_2216.png)
 
 父亲这个盒子：
 
-![](http://img.smyhvae.com/20180305_2217.png)
+![](https://img.smyhvae.com/20180305_2217.png)
 
 
 上方代码中，如果我们给父亲设置一个属性：`overflow: hidden`，就可以避免这个问题，此时父亲的高度是110px，这个用到的就是BFC（下一段讲解）。
@@ -219,12 +219,12 @@ PS：如果不在标准流，比如盒子都浮动了，那么两个盒子之间
 
 上面的结构中，我们尝试通过给儿子`p`一个`margin-top:50px;`的属性，让其与父亲保持50px的上边距。结果却看到了下面的奇怪的现象：
 
-![](http://img.smyhvae.com/20170806_1537.png)
+![](https://img.smyhvae.com/20170806_1537.png)
 
 
 此时我们给父亲div加一个border属性，就正常了：
 
-![](http://img.smyhvae.com/20170806_1544.png)
+![](https://img.smyhvae.com/20170806_1544.png)
 
 
 如果父亲没有border，那么儿子的margin实际上踹的是“流”，踹的是这“行”。所以，父亲整体也掉下来了。
@@ -358,7 +358,7 @@ BFC 的原理，其实也就是 BFC 的渲染规则（能说出以下四点就�
 
 效果如下：
 
-![](http://img.smyhvae.com/20180306_0825.png)
+![](https://img.smyhvae.com/20180306_0825.png)
 
 上图中，由于右侧标准流里的元素，比左侧浮动的元素要高，导致右侧有一部分会跑到左边的下面去。
 
@@ -371,7 +371,7 @@ BFC 的原理，其实也就是 BFC 的渲染规则（能说出以下四点就�
 ```
 
 
-![](http://img.smyhvae.com/20180306_0827.png)
+![](https://img.smyhvae.com/20180306_0827.png)
 
 上图表明，解决之后，`father-layout`的背景色显现出来了，说明问题解决了。
 
@@ -415,13 +415,13 @@ BFC 的原理，其实也就是 BFC 的渲染规则（能说出以下四点就�
 
 效果如下：
 
-![](http://img.smyhvae.com/20180306_0840.png)
+![](https://img.smyhvae.com/20180306_0840.png)
 
 上面的代码中，儿子浮动了，但由于父亲没有设置高度，导致看不到父亲的背景色（此时父亲的高度为0）。正所谓**有高度的盒子，才能关住浮动**。
 
 如果想要清除浮动带来的影响，方法一是给父亲设置高度，然后采用隔墙法。方法二是 BFC：给父亲增加 `overflow=hidden`属性即可， 增加之后，效果如下：
 
-![](http://img.smyhvae.com/20180306_0845.png)
+![](https://img.smyhvae.com/20180306_0845.png)
 
 为什么父元素成为BFC之后，就有了高度呢？这就回到了**第四条：计算BFC的高度时，浮动元素也参与计算**。意思是，**在计算BFC的高度时，子元素的float box也会参与计算**。
 
@@ -433,7 +433,7 @@ BFC 的原理，其实也就是 BFC 的渲染规则（能说出以下四点就�
 
 扫一扫，你将发现另一个全新的世界，而这将是一场美丽的意外：
 
-![](http://img.smyhvae.com/2016040102.jpg)
+![](https://img.smyhvae.com/2016040102.jpg)
 
 
 

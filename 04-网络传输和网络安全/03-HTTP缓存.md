@@ -35,7 +35,7 @@ http 缓存策略分为：
 
 浏览器第一次请求一个资源时，服务器在返回该资源的同时，会把上面这两个属性放在response headers中。比如：
 
-![](http://img.smyhvae.com/20180310_2310.png)
+![](https://img.smyhvae.com/20180310_2310.png)
 
 **注意**：这两个response header属性可以只启用一个，也可以同时启用。当response header中，Expires和Cache-Control同时存在时，**Cache-Control的优先级高于Expires**。
 
@@ -77,15 +77,15 @@ ETag（Entity Tag）：被请求变量的实体值”。
 
 （1）浏览器第一次请求一个资源，服务器在返回这个资源的同时，会加上`Last-Modified`，这个header表示这个资源在服务器上的最后修改时间：
 
-![](http://img.smyhvae.com/20180311_1715.png)
+![](https://img.smyhvae.com/20180311_1715.png)
 
 （2）浏览器再次请求这个资源时，会加上`If-Modified-Since`这个 request header，这个header的值就是上一次返回的`Last-Modified`的值：
 
-![](http://img.smyhvae.com/20180311_1716.png)
+![](https://img.smyhvae.com/20180311_1716.png)
 
 （3）服务器收到第二次请求时，会比对浏览器传过来的`If-Modified-Since`和资源在服务器上的最后修改时间`Last-Modified`，判断资源是否有变化。如果没有变化则返回304 Not Modified，但不返回资源内容（此时，服务器不会返回 Last-Modified 这个 response header）；如果有变化，就正常返回资源内容（继续重复整个流程）。这是服务器返回304时的response header：
 
-![](http://img.smyhvae.com/20180311_1720.png)
+![](https://img.smyhvae.com/20180311_1720.png)
 
 （4）浏览器如果收到304的响应，就会从缓存中加载资源。
 
@@ -106,15 +106,15 @@ ETag（Entity Tag）：被请求变量的实体值”。
 
 （1）浏览器第一次请求一个资源，服务器在返回这个资源的同时，会加上`ETag`这个 response header，这个header是服务器根据当前请求的资源生成的**唯一标识**。这个唯一标识是一个字符串，只要资源有变化这个串就不同，跟最后修改时间无关，所以也就很好地补充了`Last-Modified`的不足。如下：
 
-![](http://img.smyhvae.com/20180311_1735.png)
+![](https://img.smyhvae.com/20180311_1735.png)
 
 （2）浏览器再次请求这个资源时，会加上`If-None-Match`这个 request header，这个header的值就是上一次返回的`ETag`的值：
 
-![](http://img.smyhvae.com/20180311_1737.png)
+![](https://img.smyhvae.com/20180311_1737.png)
 
 3）服务器第二次请求时，会对比浏览器传过来的`If-None-Match`和服务器重新生成的一个新的`ETag`，判断资源是否有变化。如果没有变化则返回304 Not Modified，但不返回资源内容（此时，由于ETag重新生成过，response header中还会把这个ETag返回，即使这个ETag并无变化）。如果有变化，就正常返回资源内容（继续重复整个流程）。这是服务器返回304时的response header：
 
-![](http://img.smyhvae.com/20180311_1740.png)
+![](https://img.smyhvae.com/20180311_1740.png)
 
 （4）浏览器如果收到304的响应，就会从缓存中加载资源。
 
