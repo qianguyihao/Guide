@@ -45,23 +45,31 @@ v-if：
 
 
 
+## Vue组件的生命周期（包括有父子组件时的情况）
+
+### 单个组件
+
+（1）创建阶段：beforeCreate、created。Vue实例初始化完成，页面尚未渲染完成。
+
+（2）渲染阶段：beforeMount、mounted。页面渲染完成。大部分业务逻辑需要在 mounted里做。
+
+（3）更新阶段：beforeUpdate、updated。data被修改时
+
+（4）销毁阶段：beforeDestroy、destroyed。需要在 beforeDestroy里做的是：销毁自定义事件、清除定时任务、
+
+### 父子组件的生命周期
+
+（1）创建阶段：父组件先执行，子组件后执行。
+
+父beforeCreate-> 父created -> 子beforeCreate-> 子created
+
+（2）渲染阶段：子组件先执行，父组件后执行。因为子组件渲染完，父组件才能渲染完。
+
+子mounted -> 父mounted
+
+（3）更新阶段：父 beforeUpdate -> 子 beforeUpdate -> 子 updated -> 父updated
 
 
-
-
-
-
-
-
-## 描述 Vue组件生命周期（包括有父子组件时的情况）
-
-
-
-
-
-
-
-## 父子组件通信方式
 
 
 
