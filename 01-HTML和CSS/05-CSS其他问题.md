@@ -40,7 +40,11 @@ BFC：block format context，块级格式化上下文。是一块独立渲染区
 
 ### 如何实现圣杯布局、双飞翼布局
 
+使用 float布局实现的技术总结：
 
+- 两侧使用 margin 负值，以便和中间内容横向重叠。
+
+- 防止中间内容被两侧覆盖，一个用 padding，一个用 margin。 
 
 ### 手写 clearfix
 
@@ -120,5 +124,49 @@ html: {
 
 
 
+## 响应式布局的常见方案
 
+### 方案1：rem
 
+步骤（1）：media-query，根据不同的屏幕宽度设置根元素。
+
+步骤（2）：font-size的单位设置为rem，基于根元素的相对单位。
+
+```html
+<style type="text/css">
+  @media only screen and (max-width: 374px) {
+    /* iphone5 或者更小的尺寸，以 iphone5 的宽度（320px）比例设置 font-size */
+    html {
+      font-size: 86px;
+    }
+  }
+  @media only screen and (min-width: 375px) and (max-width: 413px) {
+    /* iphone6/7/8 和 iphone x */
+    html {
+      font-size: 100px;
+    }
+  }
+  @media only screen and (min-width: 414px) {
+    /* iphone6p 或者更大的尺寸，以 iphone6p 的宽度（414px）比例设置 font-size */
+    html {
+      font-size: 110px;
+    }
+  }
+</style>
+```
+
+rem的弊端：阶梯式。
+
+### 方案2：vw、vh
+
+网页视口尺寸相关知识：
+
+- window.screen.height：屏幕高度
+- window.innerHeight 网页视口高度
+- document.body.clientHeight：body 高度 
+
+vw、vh：
+
+- width: 1vw 网页视口宽度的1%
+- height: 1vh 网页视口高度的1%
+- vmax：取两者最大值；vmin：取两者最小值。
