@@ -32,7 +32,7 @@ beforeDestroy() {
 
 
 
-### ref：父附件调用子组件
+### ref 和  parent
 
 ### mixin：多个组件共用数据和逻辑
 

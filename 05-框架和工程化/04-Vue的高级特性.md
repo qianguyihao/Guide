@@ -1,4 +1,4 @@
-# 前言 
+# 前言
 
 Vue的高级特性包括：
 
@@ -14,7 +14,7 @@ Vue的高级特性包括：
 
 
 
-## 自定义 v-model
+## 自定义 v-model event
 
 父组件：
 
@@ -159,7 +159,7 @@ export default {
 
 ### 具名插槽
 
-## 动态组件
+## 动态组件:is	= "my-component-name"
 
 如果组件类型、组件数量不确定，则可以用动态组件。
 
@@ -188,7 +188,7 @@ dataList: [
 
 
 
-## 异步组件（很常用）
+## 异步组件（很常用）import('../FormDemo')
 
 - 按需加载，异步加载大组件。什么时候用到，再什么时候加载，避免影响首页打开性能。
 - 语法：import() 函数。普通的 import是同步加载，而异步加载是通过 import()函数。
@@ -257,6 +257,31 @@ mixin的问题：
 - 多 mixin 可能会造成命名冲突
 
 - mixin和组件可能出现多对多的关系，复杂度较高。
+
+
+
+## Vuex
+
+- 基本概念、基本使用、API。
+
+- 可能会考察 state的数据结构设计。
+
+基本概念：state、getters、action、mutation
+
+用于 Vue组件：dispatch、commit、mapState、mapGetters、mapActions、mapmutations
+
+![vuex](https://vuex.vuejs.org/vuex.png)
+
+
+
+## Vue-router
+
+### 路由模式
+
+- hash模式（默认）
+- h5 history 模式。需要服务端支持。
+
+- 路由配置：动态路由、懒加载
 
 
 

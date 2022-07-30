@@ -39,9 +39,7 @@ v-if：
 
 ### v-for 和 v-if 不能一起使用
 
-假设v-for 和 v-if一起使用：
-
-- 由于v-for比 v-if先执行，这会导致 v-if重复执行很多遍。这种写法是不建议的。
+假设v-for 和 v-if一起使用：由于v-for比 v-if先执行，这会导致 v-if重复执行很多遍。这种写法是不建议的。
 
 
 
@@ -55,7 +53,15 @@ v-if：
 
 （3）更新阶段：beforeUpdate、updated。data被修改时
 
-（4）销毁阶段：beforeDestroy、destroyed。需要在 beforeDestroy里做的是：销毁自定义事件、清除定时任务、
+（4）销毁阶段：beforeDestroy、destroyed。需要在 beforeDestroy里做的是：解绑自定义事件 event.$off、清除定时任务、解绑自定义的 DOM事件。
+
+
+
+
+
+
+
+
 
 ### 父子组件的生命周期
 
