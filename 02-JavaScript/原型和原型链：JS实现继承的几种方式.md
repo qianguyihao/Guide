@@ -16,8 +16,6 @@
 
 - 继承的几种方式
 
-
-
 ## 类的定义、实例化
 
 ### 类的定义/类的声明
@@ -60,7 +58,9 @@
 
 **继承的方式有几种？每种形式的优缺点是**？这些问题必问的。其实就是考察你对原型链的掌握程度。
 
-### 方式一：借助构造函数
+
+
+### 方式1：构造函数继承（借助call）
 
 
 ```javascript
@@ -86,34 +86,42 @@
 
 **分析**：
 
-这种方式，虽然改变了 this 的指向，但是，**Child1 无法继承 Parent1 的原型**。也就是说，如果我给 Parent1 的原型增加一个方法：
+这种方式，改变了 this 的指向，子类可以继承父类**实例**的属性和方法，但**无法继承父类的原型**（的属性和方法）。也就是说，如果我给 Parent1 的原型增加属性和方法：
 
 ```javascript
-    Parent1.prototype.say = function () {
+		Parent1.prototype.age = 28;
+		Parent1.prototype.getName = function () {
+      return this.name;
     };
+
+		let child = new Child1();
+		console.log(child.age); // 打印结果：undefined
+		console.log(child.getName()); // 报错：child.getName is not a function
 ```
 
 上面这个方法是无法被 Child1 继承的。如下：
 
 ![](https://img.smyhvae.com/20180307_1030.png)
 
-### 方法二：通过原型链实现继承
+
+
+### 方法2：原型链继承
 
 ```javascript
-    /*
-    通过原型链实现继承
-     */
-    function Parent() {
-        this.name = 'Parent 的属性';
-    }
+/*
+	通过原型链实现继承
+*/
+function Parent() {
+  this.name = 'Parent 的属性';
+}
 
-    function Child() {
-        this.type = 'Child 的属性';
-    }
+function Child() {
+  this.type = 'Child 的属性';
+}
 
-    Child.prototype = new Parent(); //【重要】
+Child.prototype = new Parent(); //【重要】
 
-    console.log(new Child());
+console.log(new Child());
 ```
 
 打印结果：
@@ -139,8 +147,7 @@
 
 造成这种缺点的原因是：child1和child2共用原型。即：`chi1d1.__proto__ === child2__proto__`是严格相同。而 arr方法是在 Parent 的实例上（即 Child实例的原型）的。
 
-
-## 方式三：组合的方式：构造函数 + 原型链
+### 方式3：组合继承：构造函数  + 原型链
 
 就是把上面的两种方式组合起来：
 
@@ -167,7 +174,32 @@
 
 这种方式的缺点是：让父亲Parent的构造方法执行了两次。
 
+### 方式4：ES6的extends关键字
 
+上面的三种方式是ES5中的继承。下面讲一下ES6中的继承方式。
 
-ES6中的继承方式，一带而过即可，重点是要掌握ES5中的继承。
+我们可以利用 ES6 里的 extends 的语法糖，很容易直接实现继承。代码举例：
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name
+  }
+  // 原型方法
+  // 即 Person.prototype.getName = function() { }
+  // 下面可以简写为 getName() {...}
+  getName = function () {
+    console.log('Person:', this.name)
+  }
+}
+class Gamer extends Person {
+  constructor(name, age) {
+    // 子类中存在构造函数，则需要在使用“this”之前首先调用 super()
+    super(name)
+    this.age = age
+  }
+}
+const asuna = new Gamer('Asuna', 20)
+asuna.getName() // 成功访问到父类的方法
+```
 
